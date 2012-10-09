@@ -106,10 +106,17 @@
                 str = str.replace(/<([^>]*)>\s*<\/\1>/g, ""); //empty tags
                 return str.replace(/<\/(\w+)>(\S)/g, "</$1> $2");
             }
+            function ShowHideAllLanguage()
+            {
+                ShowHideAllSection('pnlGenAcceptedAll');
+                ShowHideAllSection('pnlControversalAll');
+                ShowHideAllSection('pnlNonMuslimAll');
 
+                return false;
+            }
             function ShowHideAllSection(id) {
-                var pnl = 'pnl' + id;
-                var lbl = 'lbl' + id;
+                var pnl = id;
+                var lbl = 'lblLanguageAll';
                 if (document.getElementById(pnl).style.display == 'none') {
                     document.getElementById(pnl).style.display = 'block';
                     SetText(document.getElementById(lbl), "[Hide Other Languages]");
@@ -251,22 +258,15 @@
                         <asp:Label ID="lblFootnote" class="my_translation_footnote" runat="server" />
                     </p>
                 </asp:Panel>
-
-                <p class="type">Generally Accepted<a href="#" id="lnkGenAcctetedAll" onclick="ShowHideAllSection('GenAcceptedAll');" >
-                     <asp:Label ID="lblGenAcceptedAll" runat="server" Text="[Show All Languages]"></asp:Label> </a></p>
+              
+                <p class="type">Generally Accepted</p>
                 <asp:Panel ID="pnlAccepted" runat="server"></asp:Panel>
-                 
                  <asp:Panel ID="pnlGenAcceptedAll" runat="server"   Style="display:none" ></asp:Panel>
-
-                <p class="type">Controversal<a href="#" id="lnkControversalAll" onclick="ShowHideAllSection('ControversalAll');" >
-                     <asp:Label ID="lblControversalAll" runat="server" Text="[Show All Languages]"></asp:Label> </a></p>
+                <p class="type">Controversal</p>
                 <asp:Panel ID="pnlControversal" runat="server"></asp:Panel>
-                                 
                  <asp:Panel ID="pnlControversalAll" runat="server"     Style="display:none" ></asp:Panel>
-                <p class="type">Non-Muslim and/or Orientalist<a href="#" id="lnkNonMuslimAll" onclick="ShowHideAllSection('NonMuslimAll');" >
-                     <asp:Label ID="lblNonMuslimAll" runat="server" Text="[Show All Languages]"></asp:Label> </a></p>
+                <p class="type">Non-Muslim and/or Orientalist</p>
                 <asp:Panel ID="pnlNonMuslim" runat="server"></asp:Panel>
-                                 
                  <asp:Panel ID="pnlNonMuslimAll" runat="server"    Style="display:none" ></asp:Panel>
                 
             </div>
@@ -279,6 +279,8 @@
                 <p>
                     <asp:HyperLink runat="server" Text="Prev" ID="PrevAyah2" />
                     <asp:HyperLink runat="server" Text="Next" ID="NextAyah2" />
+                    |<a href="#" id="lnkLanguageAll" onclick="ShowHideAllLanguage();" >
+                     <asp:Label ID="lblLanguageAll" runat="server" Text="[Show All Languages]"></asp:Label> </a>
                 </p>
                 <p>
                     <a href="/Settings.aspx">More Translations</a>

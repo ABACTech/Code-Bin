@@ -142,7 +142,7 @@ namespace QuranWeb
             var languageId = int.Parse(ddlLanguageFilter.SelectedValue);
             //Request.Cookies.
             Response.Cookies.Set(new System.Web.HttpCookie("language", ddlLanguageFilter.SelectedValue));
-            lblGenAcceptedAll.Visible = lblControversalAll.Visible = lblNonMuslimAll.Visible = languageId == 0 ? false : true;
+            lblLanguageAll.Visible =  languageId == 0 ? false : true;
         }
         private void LoadLanguageDropdown()
         {
@@ -157,7 +157,7 @@ namespace QuranWeb
             var languageIDCookie = Request.Cookies["language"];
             if (languageIDCookie != null)
                 ddlLanguageFilter.SelectedValue = languageIDCookie.Value;
-           lblGenAcceptedAll.Visible =lblControversalAll.Visible= lblNonMuslimAll.Visible = ddlLanguageFilter.SelectedValue == "0" ? false : true;
+           lblLanguageAll.Visible = ddlLanguageFilter.SelectedValue == "0" ? false : true;
         }
         private void LoadAyahDropdown()
         {
